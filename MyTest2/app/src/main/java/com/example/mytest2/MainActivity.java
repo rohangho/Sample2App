@@ -26,31 +26,51 @@ public class MainActivity extends AppCompatActivity {
         if(a!=null && b!=null && c!=null) {
             if (c.equals("Addition")) {
                 output=Integer.parseInt(a) + Integer.parseInt(b);
-//                Intent sendIntent = new Intent("com.example.1");
-//                sendIntent.putExtra("result",output);
-//                sendBroadcast(sendIntent);
+                Thread thread=new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            sleep(1000);
+                            Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest1");
+                            launchIntent.putExtra("result",output);
+                            if (launchIntent != null) {
+                                startActivity(launchIntent);
+                                finish();
 
+                            }
 
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
 
-                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest1");
-                launchIntent.putExtra("result",output);
-                if (launchIntent != null) {
-                    startActivity(launchIntent);
-                    finish();
-
-                }
-
+                thread.start();
 
 
             } else {
                 output=Integer.parseInt(a) - Integer.parseInt(b);
-                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest1");
-                launchIntent.putExtra("result",output);
-                if (launchIntent != null) {
-                    startActivity(launchIntent);
-                    finish();
+                Thread thread=new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            sleep(1000);
+                            Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest1");
+                            launchIntent.putExtra("result",output);
+                            if (launchIntent != null) {
+                                startActivity(launchIntent);
+                                finish();
 
-                }
+                            }
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                thread.start();
+
             }
         }
         else
