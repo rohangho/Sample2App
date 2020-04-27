@@ -55,32 +55,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 display3.setText("Action : "+"addition");
-                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest2");
-                launchIntent.putExtra("Input1",input1.getText().toString());
-                launchIntent.putExtra("Input2",input2.getText().toString());
-                launchIntent.putExtra("Action","Addition");
-                if (launchIntent != null) {
-                    startActivity(launchIntent);
-
-
+                Intent intent=new Intent(getApplication(),MainLibraryActivity.class);
+                intent.putExtra("Input1",input1.getText().toString());
+                intent.putExtra("Input2",input2.getText().toString());
+                intent.putExtra("Action","Addition");
+               startActivityForResult(intent,101);
                 }
-            }
         });
 
 
         substraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                display3.setText("Action : "+"substraction");
-                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest2");
-                launchIntent.putExtra("Input1",input1.getText().toString());
-                launchIntent.putExtra("Input2",input2.getText().toString());
-                launchIntent.putExtra("Action","Substraction");
-                if (launchIntent != null) {
-                    startActivity(launchIntent);
+                Intent intent=new Intent(getApplication(),MainLibraryActivity.class);
+                intent.putExtra("Input1",input1.getText().toString());
+                intent.putExtra("Input2",input2.getText().toString());
+                intent.putExtra("Action","Substraction");
+                startActivityForResult(intent,101);
 
 
-                }
+
             }
         });
 
@@ -92,4 +86,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==101 && resultCode==RESULT_OK)
+        {
+            int a=data.getExtras().getInt("abcd");
+            display4.setText("output : " +a);
+        }
+    }
 }

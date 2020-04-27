@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 launchIntent.putExtra("result",output);
                 if (launchIntent != null) {
                     startActivity(launchIntent);
+                    finish();
 
                 }
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 launchIntent.putExtra("result",output);
                 if (launchIntent != null) {
                     startActivity(launchIntent);
+                    finish();
 
                 }
             }
