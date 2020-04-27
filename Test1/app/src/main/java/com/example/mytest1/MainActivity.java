@@ -46,16 +46,24 @@ public class MainActivity extends AppCompatActivity {
         display3=findViewById(R.id.display3);
         display4=findViewById(R.id.display4);
 
+        if(getIntent().getExtras()!=null) {
+            display4.setText("Output : "+ getIntent().getExtras().getInt("result"));
+            display3.setVisibility(View.VISIBLE);
+        }
 
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 display3.setText("Action : "+"addition");
-                Intent intent=new Intent(getApplication(), MainLibraryActivity.class);
-                intent.putExtra("Input1",input1.getText().toString());
-                intent.putExtra("Input2",input2.getText().toString());
-                intent.putExtra("Action","Addition");
-                startActivityForResult(intent,1);
+                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest2");
+                launchIntent.putExtra("Input1",input1.getText().toString());
+                launchIntent.putExtra("Input2",input2.getText().toString());
+                launchIntent.putExtra("Action","Addition");
+                if (launchIntent != null) {
+                    startActivity(launchIntent);
+
+
+                }
             }
         });
 
@@ -64,11 +72,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 display3.setText("Action : "+"substraction");
-                Intent intent=new Intent(getApplication(), MainLibraryActivity.class);
-                intent.putExtra("Input1",input1.getText().toString());
-                intent.putExtra("Input2",input2.getText().toString());
-                intent.putExtra("Action","Addition");
-                startActivityForResult(intent,1);
+                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest2");
+                launchIntent.putExtra("Input1",input1.getText().toString());
+                launchIntent.putExtra("Input2",input2.getText().toString());
+                launchIntent.putExtra("Action","Substraction");
+                if (launchIntent != null) {
+                    startActivity(launchIntent);
+
+
+                }
             }
         });
 
@@ -79,18 +91,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1 && resultCode==RESULT_OK)
-        {
-            display1.setText("Input : " +input1.getText().toString());
-            display2.setText("Input : " +input2.getText().toString());
-            display3.setVisibility(View.VISIBLE);
-            int a=data.getIntExtra("abcd",0);
-            display4.setText("output :"+ a);
-
-        }
-    }
 }
