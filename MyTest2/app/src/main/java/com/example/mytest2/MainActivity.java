@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                             sleep(1000);
                             Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest1");
                             launchIntent.putExtra("result",output);
+                            launchIntent.putExtra("input1",a);
+                            launchIntent.putExtra("input2",b);
+                            launchIntent.putExtra("action",c);
                             if (launchIntent != null) {
                                 startActivity(launchIntent);
                                 finish();
@@ -57,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
                             sleep(1000);
                             Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.mytest1");
                             launchIntent.putExtra("result",output);
+                            launchIntent.putExtra("input1",a);
+                            launchIntent.putExtra("input2",b);
+                            launchIntent.putExtra("action",c);
                             if (launchIntent != null) {
                                 startActivity(launchIntent);
                                 finish();

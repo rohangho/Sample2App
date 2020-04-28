@@ -51,6 +51,9 @@ public class MainLibraryActivity extends AppCompatActivity {
         if(getIntent().getExtras()!=null) {
             Intent intent=new Intent();
             intent.putExtra("abcd", getIntent().getExtras().getInt("result"));
+            intent.putExtra("efgh", getIntent().getExtras().getString("input1"));
+            intent.putExtra("ijkl", getIntent().getExtras().getString("input2"));
+            intent.putExtra("mnop", getIntent().getExtras().getString("action"));
             setResult(Activity.RESULT_OK, intent);
             finish();
         }

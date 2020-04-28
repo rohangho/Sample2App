@@ -48,13 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
         if(getIntent().getExtras()!=null) {
             display4.setText("Output : "+ getIntent().getExtras().getInt("result"));
-            display3.setVisibility(View.VISIBLE);
+            display1.setText("Input : "+ getIntent().getExtras().getString("input1"));
+            display2.setText("Input : "+ getIntent().getExtras().getString("input2"));
+            display3.setText("Action : "+ getIntent().getExtras().getString("action"));
         }
 
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                display3.setText("Action : "+"addition");
                 Intent intent=new Intent(getApplication(),MainLibraryActivity.class);
                 intent.putExtra("Input1",input1.getText().toString());
                 intent.putExtra("Input2",input2.getText().toString());
@@ -92,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==101 && resultCode==RESULT_OK)
         {
             int a=data.getExtras().getInt("abcd");
+            String a1=data.getExtras().getString("efgh");
+            String a2=data.getExtras().getString("ijkl");
+            String a3=data.getExtras().getString("mnop");
+            display1.setText("Input : "+ a1);
+            display1.setText("Input : "+ a2);
+            display3.setText("Action : "+ a3);
             display4.setText("output : " +a);
         }
     }
