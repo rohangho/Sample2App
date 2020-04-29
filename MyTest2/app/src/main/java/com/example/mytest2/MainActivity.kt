@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 thread.start()
             }
         } else {
-            Toast.makeText(applicationContext, "Please Install the othe App", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Please Install the othe App and Pass Some Value", Toast.LENGTH_SHORT).show()
         }
     }
 }
